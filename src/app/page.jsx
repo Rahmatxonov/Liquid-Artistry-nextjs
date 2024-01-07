@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "@/components/Header";
 import "../app/index.css";
 import Maestro from "@/components/Maestro";
@@ -9,7 +11,7 @@ export default function Home() {
       <Header />
       <Maestro />
       <ImageCard />
-      {/* <Cocktails /> */}
+      <Cocktails />
     </div>
   );
 }
