@@ -1,0 +1,13 @@
+.Cocktails {
+  padding-top: 300px;
+}
+.Cocktails__title {
+  max-width: 371px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 43px;
+  color: #d16868;
+  padding-bottom: 57px;
+  margin-left: 120px;
+}

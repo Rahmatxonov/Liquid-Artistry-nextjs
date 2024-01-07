@@ -1,0 +1,33 @@
+.ImageCard {
+  padding-top: 900px;
+  position: relative;
+}
+.ImageCard span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.img {
+  width: 800px;
+  height: 450px;
+  z-index: 6;
+}
+.imgO {
+  position: absolute;
+  top: 1100px;
+  z-index: 10;
+  right: 10px;
+}
+.hourse {
+  padding-top: 137px;
+  margin-left: 120px;
+}
+.hourse__title {
+  max-width: 371px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 43px;
+  color: #d16868;
+  padding-bottom: 57px;
+}
