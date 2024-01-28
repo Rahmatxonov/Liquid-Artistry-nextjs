@@ -1,8 +1,68 @@
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
 
-export default function ProductDetail(params) {
-  if (params.ProductDetail >= 100) {
-    notFound("product");
+// export default function ProductDetail(params) {
+//   if (params.ProductDetail >= 100) {
+//     notFound("product");
+//   }
+//   return <div>ProductDetail page{params.ProductDetail}</div>;
+// }
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+
+const ProductPage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [cocktail, setCocktail] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCocktail = async () => {
+      try {
+        const response = await axios.get(
+          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+        );
+        const fullCocktailInfo = response.data.drinks
+          ? response.data.drinks[0]
+          : null;
+        setCocktail(fullCocktailInfo);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching full cocktail info:", error);
+        setError(error.message || "Error fetching data");
+        setLoading(false);
+      }
+    };
+
+    const { id: routeId } = router.query;
+    if (routeId && routeId !== id) {
+      // Routerning ma'lumotlari yangilangan
+      fetchCocktail();
+    } else {
+      setLoading(false);
+    }
+  }, [id, router.query.id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
-  return <div>ProductDetail page{params.ProductDetail}</div>;
-}
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!cocktail) {
+    return <div>No data found</div>;
+  }
+
+  return (
+    <div>
+      <h2>{cocktail.strDrink}</h2>
+      <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+      <p>{cocktail.strInstructions}</p>
+    </div>
+  );
+};
+
+export default ProductPage;

@@ -21,15 +21,16 @@ const Cocktails = () => {
   }, []);
 
   return (
-    <div className="Cocktails">
-      <h3 className="Cocktails__title">
-        <b>Cocktails</b> Menu
-      </h3>
+    <div className="cocktails">
+      <h1>Cocktails</h1>
       <ul>
         {cocktails.map((cocktail) => (
           <li key={cocktail.idDrink}>
-            {cocktail.strDrink}
-            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+            <div>
+              <h2>{cocktail.strDrink}</h2>
+              <p>{cocktail.strInstructions}</p>
+              <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+            </div>
           </li>
         ))}
       </ul>

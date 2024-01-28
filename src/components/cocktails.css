@@ -11,3 +11,18 @@
   padding-bottom: 57px;
   margin-left: 120px;
 }
+.cocktail-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+.cocktail-card__title {
+  color: #fff;
+  text-align: center;
+}
+.cocktail-card__img {
+  width: 240px;
+  height: 240px;
+  border-radius: 20px;
+}
